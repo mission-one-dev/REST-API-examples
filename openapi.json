@@ -1,0 +1,1522 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Subscribers API",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "/TestApiSubscribers"
+    }
+  ],
+  "paths": {
+    "/subscriberimports/subscriberlist": {
+      "post": {
+        "tags": [
+          "SubscriberImports"
+        ],
+        "parameters": [
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriberImportsAsyncModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriberImportsAsyncModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriberImportsAsyncModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportsAsyncResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportsAsyncResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportsAsyncResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriberimports/file": {
+      "post": {
+        "tags": [
+          "SubscriberImports"
+        ],
+        "parameters": [
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileImportsAsyncModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileImportsAsyncModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileImportsAsyncModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportsAsyncResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportsAsyncResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportsAsyncResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriberimports/{importProcessId}/status": {
+      "put": {
+        "tags": [
+          "SubscriberImports"
+        ],
+        "parameters": [
+          {
+            "name": "importProcessId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportStatusModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportStatusModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportStatusModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseApiModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseApiModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseApiModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriberimports/{importProcessId}/result": {
+      "get": {
+        "tags": [
+          "SubscriberImports"
+        ],
+        "parameters": [
+          {
+            "name": "importProcessId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportResultResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportResultResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportResultResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscribers": {
+      "get": {
+        "tags": [
+          "Subscribers"
+        ],
+        "parameters": [
+          {
+            "name": "ProjectId",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "LastChangeAfter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "LastChangeBefore",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubscriberInfoModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubscriberInfoModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubscriberInfoModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscribers/{publicId}": {
+      "get": {
+        "tags": [
+          "Subscribers"
+        ],
+        "parameters": [
+          {
+            "name": "publicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberInfoIncludingInactiveModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberInfoIncludingInactiveModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberInfoIncludingInactiveModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Subscribers"
+        ],
+        "parameters": [
+          {
+            "name": "publicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriberUpdateModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriberUpdateModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriberUpdateModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberUpdateResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberUpdateResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberUpdateResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscribers/{mid}/getbymid": {
+      "get": {
+        "tags": [
+          "Subscribers"
+        ],
+        "parameters": [
+          {
+            "name": "mid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberInfoIncludingInactiveModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberInfoIncludingInactiveModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberInfoIncludingInactiveModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscribers/{email}/{projectId}": {
+      "get": {
+        "tags": [
+          "Subscribers"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubscriberInfoIncludingInactiveModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubscriberInfoIncludingInactiveModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubscriberInfoIncludingInactiveModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscribers/{mid}/activate": {
+      "patch": {
+        "tags": [
+          "Subscribers"
+        ],
+        "parameters": [
+          {
+            "name": "mid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscribersProcessingResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscribersProcessingResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscribersProcessingResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscribers/{projectId}/{publicId}": {
+      "patch": {
+        "tags": [
+          "Subscribers"
+        ],
+        "parameters": [
+          {
+            "name": "publicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriberUpdateModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriberUpdateModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriberUpdateModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberUpdateResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberUpdateResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriberUpdateResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions": {
+      "post": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "parameters": [
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionSetupModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionSetupModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionSetupModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionPostResponseApiModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionPostResponseApiModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionPostResponseApiModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{publicId}": {
+      "delete": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "parameters": [
+          {
+            "name": "publicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseApiModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseApiModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseApiModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{projectId}/{publicId}": {
+      "delete": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "publicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-m1-customerinfo",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "666, 9e0b52cd-f0cf-4394-9357-da6ab0e96a06"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseApiModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseApiModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseApiModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Action": {
+        "enum": [
+          "Unknown",
+          "Insert",
+          "Delete"
+        ],
+        "type": "string"
+      },
+      "AttributeModel": {
+        "type": "object",
+        "properties": {
+          "attributeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributeValue": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ColumnMappingModel": {
+        "type": "object",
+        "properties": {
+          "fileColumnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributeName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ColumnSeparatorModel": {
+        "enum": [
+          "Tab",
+          "Semicolon",
+          "Comma",
+          "Space"
+        ],
+        "type": "string"
+      },
+      "Condition": {
+        "type": "object",
+        "properties": {
+          "operator": {
+            "$ref": "#/components/schemas/ConditionOperator"
+          },
+          "fieldName": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConditionOperator": {
+        "enum": [
+          "Equal",
+          "NotEqual",
+          "BiggerThen",
+          "LowerThen",
+          "Contains",
+          "NotContains",
+          "IsNull",
+          "IsNotNull"
+        ],
+        "type": "string"
+      },
+      "CreatePersonGroupModel": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FailedSubscriber": {
+        "type": "object",
+        "properties": {
+          "sourceSubscriber": {
+            "$ref": "#/components/schemas/Subscriber"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FailedSubscriberModel": {
+        "type": "object",
+        "properties": {
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FailedSubscriberModelAttributeModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FailedSubscriberModelAttributeModel": {
+        "type": "object",
+        "properties": {
+          "attributeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributeValue": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Field": {
+        "type": "object",
+        "properties": {
+          "fieldName": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FieldValue": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FileImportsAsyncModel": {
+        "type": "object",
+        "properties": {
+          "importFile": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "columnMappings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ColumnMappingModel"
+            },
+            "nullable": true
+          },
+          "columnSeparator": {
+            "$ref": "#/components/schemas/ColumnSeparatorModel"
+          },
+          "fileType": {
+            "$ref": "#/components/schemas/FileTypeModel"
+          },
+          "importConfiguration": {
+            "$ref": "#/components/schemas/ImportConfigurationModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FileTypeModel": {
+        "enum": [
+          "Text",
+          "Zip"
+        ],
+        "type": "string"
+      },
+      "ImportConfigurationModel": {
+        "type": "object",
+        "properties": {
+          "importType": {
+            "$ref": "#/components/schemas/ImportTypeModel"
+          },
+          "projectIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "interestSetting": {
+            "$ref": "#/components/schemas/InterestSettingModel"
+          },
+          "checkAgainstInactive": {
+            "type": "boolean"
+          },
+          "personGroup": {
+            "$ref": "#/components/schemas/PersonGroupModel"
+          },
+          "insertSettings": {
+            "$ref": "#/components/schemas/InsertSettingsModel"
+          },
+          "insertOrUpdateSettings": {
+            "$ref": "#/components/schemas/InsertOrUpdateSettingsModel"
+          },
+          "updateSettings": {
+            "$ref": "#/components/schemas/UpdateSettingsModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ImportResultResponseModel": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "countCurrentSucceded": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "countCurrentFailed": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "countTotal": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "failedSubscribers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FailedSubscriberModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ImportsAsyncResponse": {
+        "type": "object",
+        "properties": {
+          "importProcessId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "infoMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ImportStatusModel": {
+        "enum": [
+          "Paused",
+          "Resumed",
+          "Stopped"
+        ],
+        "type": "string"
+      },
+      "ImportTypeModel": {
+        "enum": [
+          "Insert",
+          "InsertOrUpdate",
+          "Update"
+        ],
+        "type": "string"
+      },
+      "InsertOrUpdateSettingsModel": {
+        "type": "object",
+        "properties": {
+          "uniqueUpdateAttributeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sendNewsletterId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertSettingsModel": {
+        "type": "object",
+        "properties": {
+          "insertType": {
+            "$ref": "#/components/schemas/InsertTypeModel"
+          },
+          "sendNewsletterId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertTypeModel": {
+        "enum": [
+          "Normal",
+          "Doi"
+        ],
+        "type": "string"
+      },
+      "Interest": {
+        "type": "object",
+        "properties": {
+          "interestAction": {
+            "$ref": "#/components/schemas/Action"
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InterestSettingModel": {
+        "enum": [
+          "None",
+          "Append",
+          "Overwrite"
+        ],
+        "type": "string"
+      },
+      "MultiSelectField": {
+        "type": "object",
+        "properties": {
+          "fieldName": {
+            "type": "string",
+            "nullable": true
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FieldValue"
+            },
+            "nullable": true
+          },
+          "insertValueIfNotExists": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonGroupModel": {
+        "type": "object",
+        "properties": {
+          "createPersonGroup": {
+            "$ref": "#/components/schemas/CreatePersonGroupModel"
+          },
+          "updatePersonGroup": {
+            "$ref": "#/components/schemas/UpdatePersonGroupModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponseApiModel": {
+        "type": "object",
+        "properties": {
+          "actionSuccessful": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Subscriber": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Field"
+            },
+            "nullable": true
+          },
+          "head": {
+            "type": "string",
+            "nullable": true
+          },
+          "interests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Interest"
+            },
+            "nullable": true
+          },
+          "where": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Condition"
+            },
+            "nullable": true
+          },
+          "resetAllInterests": {
+            "type": "boolean"
+          },
+          "multiSelectFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MultiSelectField"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriberAsyncModel": {
+        "type": "object",
+        "properties": {
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeModel"
+            },
+            "nullable": true
+          },
+          "interests": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriberImportsAsyncModel": {
+        "type": "object",
+        "properties": {
+          "subscribers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriberAsyncModel"
+            },
+            "nullable": true
+          },
+          "importConfiguration": {
+            "$ref": "#/components/schemas/ImportConfigurationModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriberInfoIncludingInactiveModel": {
+        "type": "object",
+        "properties": {
+          "signIn": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastChange": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeModel"
+            },
+            "nullable": true
+          },
+          "interestIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "signOut": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriberInfoModel": {
+        "type": "object",
+        "properties": {
+          "signIn": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastChange": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeModel"
+            },
+            "nullable": true
+          },
+          "interestIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriberModel": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "projectId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "otherAttributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeModel"
+            },
+            "nullable": true
+          },
+          "interestIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscribersProcessingResponse": {
+        "type": "object",
+        "properties": {
+          "isError": {
+            "type": "boolean"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "succeededSubscribersCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "failedSubscribers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FailedSubscriber"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriberUpdateModel": {
+        "type": "object",
+        "properties": {
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeModel"
+            },
+            "nullable": true
+          },
+          "interests": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriberUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "actionSuccessful": {
+            "type": "boolean"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionActivationTypeEnum": {
+        "enum": [
+          "DoiNewsletter",
+          "ImmediatelyActive"
+        ],
+        "type": "string"
+      },
+      "SubscriptionPostResponseApiModel": {
+        "type": "object",
+        "properties": {
+          "actionSuccessful": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionSetupModel": {
+        "type": "object",
+        "properties": {
+          "subscriber": {
+            "$ref": "#/components/schemas/SubscriberModel"
+          },
+          "activationType": {
+            "$ref": "#/components/schemas/SubscriptionActivationTypeEnum"
+          },
+          "customDoiNewsletterId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatePersonGroupModel": {
+        "type": "object",
+        "properties": {
+          "personGroupId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSettingsModel": {
+        "type": "object",
+        "properties": {
+          "uniqueUpdateAttributeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sendNewsletterId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
